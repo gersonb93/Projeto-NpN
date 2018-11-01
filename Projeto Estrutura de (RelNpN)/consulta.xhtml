@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Consulta</title>
+</h:head>
+<h:body>
+
+	<p:panel header="Consulta aos Alunos Inscritos">
+		<h:form id="formConsulta">
+			<p:dataTable id="tabela" value="#{alunomb.listaAluno}" var="a">
+				
+				<p:column headerText="Matricula">
+					<h:outputText value="#{a.matricula}" />
+				</p:column>
+			
+				<p:column headerText="Nome">
+					<h:outputText value="#{a.nome}" />
+				</p:column>
+				
+				<p:column headerText="Email">
+					<h:outputText value="#{a.email}" />
+				</p:column>
+				
+				<p:column headerText="Nascimento">
+					<h:outputText value="#{a.nascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Disciplinas">
+					<p:dataList value="#{a.disciplinas}" var="d">
+						#{d.nome} - #{d.cargaHr}
+					</p:dataList>
+				</p:column>
+			
+			</p:dataTable>
+			<h:link value="Cadastrar" outcome="cadastro" />
+		</h:form>
+	</p:panel>
+
+</h:body>
+</html>
